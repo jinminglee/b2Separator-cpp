@@ -9,11 +9,12 @@
 #ifndef __Thermite__b2Separator__
 #define __Thermite__b2Separator__
 
-#include <Box2D.h>
-#include <vector>
-#include <queue>
-#include <algorithm>
+class b2Body;
+struct b2FixtureDef;
 
+#include <Box2D/Common/b2Math.h>
+
+#include <vector>
 
 /*
  * Convex Separator for Box2D Flash
@@ -52,7 +53,7 @@ public:
 		 * @see b2Fixture
 		 **/
         
-    void Separate(b2Body* pBody, b2FixtureDef* pFixtureDef, vector<b2Vec2>* pVerticesVec, int scale);
+    void Separate(b2Body* pBody, b2FixtureDef* pFixtureDef, const std::vector<b2Vec2> &pVerticesVec);
 		/**
 		 * Checks whether the vertices in <code>verticesVec</code> can be properly distributed into the new fixtures (more specifically, it makes sure there are no overlapping segments and the vertices are in clockwise order).
 		 * It is recommended that you use this method for debugging only, because it may cost more CPU usage.
@@ -67,14 +68,14 @@ public:
 		 * </ul>
 		 * */
         
-    int Validate(const vector<b2Vec2>& verticesVec);
+    int Validate(const std::vector<b2Vec2> &verticesVec);
 
     
 private:
     
-    void calcShapes(vector<b2Vec2> &pVerticesVec, vector<vector<b2Vec2> > &result);
-	b2Vec2* hitRay(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4);
-	b2Vec2* hitSegment(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4);
+    void calcShapes(const std::vector<b2Vec2> &pVerticesVec, std::vector<std::vector<b2Vec2> > &result);
+	bool hitRay(b2Vec2 &out, float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4);
+	bool hitSegment(b2Vec2 &out, float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4);
 	bool isOnSegment(float px, float py, float x1, float y1, float x2, float y2);
     bool pointsMatch(float x1, float y1, float x2,float y2);
     bool isOnLine(float px, float py, float x1, float y1, float x2, float y2);
