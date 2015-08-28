@@ -16,6 +16,10 @@
 
 #define EPSILON 0.00001f
 
+#ifndef HUGE_VALF
+#define HUGE_VALF 5e8f
+#endif
+
 void err()
 {
     throw std::runtime_error("Unable to seperate into convex parts. Use Validate() to find the purpose.");
@@ -75,9 +79,9 @@ int b2Separator::Validate(const std::vector<b2Vec2>& verticesVec)
                     j2 = (j < n - 1) ? j + 1 : 0;
                     b2Vec2 tmp;
                     if (hitSegment(tmp, verticesVec[i].x, verticesVec[i].y,
-                                   verticesVec[i2].x, verticesVec[i2].y, verticesVec[j].x,
-                                   verticesVec[j].y, verticesVec[j2].x,
-                                   verticesVec[j2].y)) {
+                                   verticesVec[i2].x, verticesVec[i2].y,
+                                   verticesVec[j].x, verticesVec[j].y,
+                                   verticesVec[j2].x, verticesVec[j2].y)) {
                         ret = 1; // TODO: This may be wrong!!!
                     }
                 }
