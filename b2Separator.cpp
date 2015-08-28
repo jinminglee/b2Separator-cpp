@@ -14,13 +14,11 @@
 #include <algorithm>
 #include <exception>
 
-#define EPSILON 0.00001
+#define EPSILON 0.00001f
 
 void err()
 {
-    throw std::runtime_error(
-                             "Unable to seperate into convex parts. Use Validate() to find the "
-                             "purpose.");
+    throw std::runtime_error("Unable to seperate into convex parts. Use Validate() to find the purpose.");
 }
 
 void b2Separator::Separate(b2Body* pBody, b2FixtureDef* pFixtureDef,
