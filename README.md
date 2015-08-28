@@ -3,7 +3,7 @@
 # [b2Separator-cpp](https://github.com/mcourteaux/b2Separator-cpp)
 
 Create non-convex, complex shapes with Box2D. Ported from Antoan Angelov's b2Separator class.
-This project is forked from [delorenj/b2Seperator-cpp](https://github.com/delorenj/b2Seperator-cpp), but the C++
+This project is forked from [delorenj/b2Separator-cpp](https://github.com/delorenj/b2Separator-cpp), but the C++
 was horrible and full of memory leaks. This is a much cleaner and better performing port.
 
 * Source: [https://github.com/mcourteaux/b2Separator-cpp](https://github.com/mcourteaux/b2Separator-cpp)
